@@ -1,0 +1,64 @@
+/* 代码整理：懒人之家 lanrenzhijia.com */
+html, body, div, span, object, img, {
+	margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	font:inherit;
+	vertical-align:baseline;
+	outline:none;
+}
+/* 代码整理：懒人之家 lanrenzhijia.com */
+
+
+/* header
+--------------------------------------------- */
+
+
+
+
+
+
+
+/* demo
+--------------------------------------------- */
+.product-preview {
+	font-size:.85em;
+	color:#444;
+	margin:20px auto;
+	width:850px;
+	padding:25px;
+	-moz-box-shadow:0 0 3px #817962;
+	background: #fff;
+}
+.product-preview h3, h4 {
+	margin:5px 0;
+	
+}
+.product-preview h3 {
+	font-size:1.2em;
+	font-weight: bold;
+	margin-top:10px;
+}
+
+.product-preview p {
+	margin:0;
+}
+.product-preview .product {
+	position:relative;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	background: #fff;
+	padding:1px;
+	
+	
+}
+.product-preview .product img {
+	top:1px;
+	left:1px;
+}
+.secondary {
+	top:0px !important;
+	left:2px !important;
+}

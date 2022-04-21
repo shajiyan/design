@@ -1,0 +1,266 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>瑞达产品设计</title>
+<link rel="stylesheet" type="text/css" href="./css/main.css" />
+<link rel="stylesheet" type="text/css" href="./js/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="./js/jquery.productColorizer.css" />
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/raphael-min.js"></script>
+<script type="text/javascript" src="./js/jquery.productColorizer.js"></script>
+<script type="text/javascript" src="./js/prettify.js"></script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+<script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+ <style>
+  #red, #green, #blue {
+    float: left;
+    clear: left;
+    width: 300px;
+    margin: 15px;
+  }
+  #swatch {
+    width: 120px;
+    height: 100px;
+    margin-top: 18px;
+    margin-left: 350px;
+    background-image: none;
+  }
+  #red .ui-slider-range { background: #ef2929; }
+  #red .ui-slider-handle { border-color: #ef2929; }
+  #green .ui-slider-range { background: #8ae234; }
+  #green .ui-slider-handle { border-color: #8ae234; }
+  #blue .ui-slider-range { background: #729fcf; }
+  #blue .ui-slider-handle { border-color: #729fcf; }
+
+  .file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 10px 14px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+	}
+   .file input {
+	    position: absolute;
+	    font-size: 100px;
+	    right: 0;
+	    top: 0;
+	    opacity: 0;
+	}
+	.file:hover {
+	background: #AADFFD;
+	border-color: #78C3F3;
+	color: #004974;
+	text-decoration: none;
+	}
+	#rgb{
+	position: relative;
+	left: 25px;
+	}
+  </style>
+  <script>
+  function hexFromRGB(r, g, b) {
+    var hex = [
+      r.toString( 16 ),
+      g.toString( 16 ),
+      b.toString( 16 )
+    ];
+    $.each( hex, function( nr, val ) {
+      if ( val.length === 1 ) {
+        hex[ nr ] = "0" + val;
+      }
+    });
+    return hex.join( "" ).toUpperCase();
+  }
+  function refreshSwatch() {
+    var red = $( "#red" ).slider( "value" ),
+      green = $( "#green" ).slider( "value" ),
+      blue = $( "#blue" ).slider( "value" ),
+      hex = hexFromRGB( red, green, blue );
+    $( "#swatch" ).css( "background-color", "#" + hex );
+    $( "#mask" ).css( "background-color", "#" + hex );
+    $("#mask").css({"opacity":"0.8"}); 
+    $("#rgb").text("RGB("+red+","+green+","+blue+")");
+  }
+  $(function() {
+    $( "#red, #green, #blue" ).slider({
+      orientation: "horizontal",
+      range: "min",
+      max: 255,
+      value: 127,
+      slide: refreshSwatch,
+      change: refreshSwatch
+    });
+    $( "#red" ).slider( "value", 255 );
+    $( "#green" ).slider( "value", 255 );
+    $( "#blue" ).slider( "value", 255 );
+  });
+  </script>
+
+<script>
+$(document).ready(function(){
+  $("button#chaircover").click(function(){
+     $("#bud").attr({"src":"images/blank_tshirt.jpg"});
+     $("#mask").attr({"src":"images/shirt-mask.png"});                
+    });
+  $("button#sofacover").click(function(){
+     $("#bud").attr({"src":"images/sofa1.jpg"});
+     $("#mask").attr({"src":"images/sofa1.png"});             
+    });
+  $("button#yulian").click(function(){
+     $("#bud").attr({"src":"images/yulian.jpg"});
+     $("#mask").attr({"src":"images/yulian.png"});             
+    });
+  $("button#b1").click(function(){
+     $("#mask").css({"background-image":"url('images/1.jpg')"});
+     $("#mask").css({"opacity":"0.5"});                  
+    });
+  $("button#b2").click(function(){
+     $("#mask").css({"background-image":"url('images/2.jpg')"});
+     $("#mask").css({"opacity":"0.5"});                  
+    });
+  $("button#b3").click(function(){
+     $("#mask").css({"background-image":"url('images/3.jpg')"});
+     $("#mask").css({"opacity":"0.5"});                  
+    });
+  $("button#b4").click(function(){
+     $("#mask").css({"background-image":"url('images/4.jpg')"});
+     $("#mask").css({"opacity":"0.5"});                  
+    });
+  $("button#b5").click(function(){
+     $("#mask").css({"background-image":"url('images/5.jpg')"});
+     $("#mask").css({"opacity":"0.5"});                  
+    });
+  $("button#b6").click(function(){
+     $("#mask").css({"background-image":"url('images/6.jpg')"});
+     $("#mask").css({"opacity":"0.5"});                  
+    });
+  $("button#b7").click(function(){
+     $("#mask").css({"background-image":"url('images/7.jpg')"});
+     $("#mask").css({"opacity":"0.5"});                  
+    });
+  $("a#qctp").click(function(){
+     $("#mask").css({"background-image":"url()"});
+     $("#mask").css({"opacity":"0.5"});                  
+    });
+  $("button#sss").click(function(){
+  	
+	html2canvas(document.querySelector("#bud")).then(canvas => {
+      document.body.appendChild(canvas)
+     });
+   });
+
+  });
+ 
+</script>	
+<script>
+  
+  $(function() {
+    $( "#size" ).slider({
+      animate:"fast",
+      max:400,
+      change: function(event,ui){
+      	var size=ui.value;
+      	   
+      	
+      	$("#mask").css({"background-size":size});
+      }
+      
+     
+    });
+  });
+</script>
+<script type="text/javascript">
+        function ProcessFile(e) {
+            var file = document.getElementById('file').files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    var txt = event.target.result;
+                   
+                    var img = document.createElement("img");
+                    img.src = txt;//将图片base64字符串赋值给img的src
+                  
+                    $("#mask").css("background-image","url("+img.src+")");
+                    document.getElementById("mask").style.opacity = '0.5';
+                    document.getElementById("result");
+
+                };
+            }
+            reader.readAsDataURL(file);
+        }
+
+        function contentLoaded() {
+            document.getElementById('file').addEventListener('change',
+                ProcessFile, false);
+        }
+
+        window.addEventListener("DOMContentLoaded", contentLoaded, false);
+</script>
+<script>
+
+</script>
+</head>
+<body style="background-color: #3d3d3e;">
+	
+			<div class="product-preview">
+			 <div class="product" id="product">
+					<img id="bud" src="images/yulian.jpg" alt="Shirt Image" />
+					<img id="mask" class="mask" src="images/yulian.png" alt="Mask Image" />
+			 </div>
+		     <h4>模型</h4>
+				 <button id="chaircover" class="btn btn-outline-dark" style="background: url(images/blank_tshirt.jpg);background-size:65px; width: 50px;height: 50px;background-repeat: no-repeat;" alt="chaircover"></button>
+                 <button id="sofacover" class="btn btn-outline-dark" style="background: url(images/sofa1.jpg);background-size:65px; width: 50px; height: 50px" alt="sofacover"></button>
+                 <button id="yulian"  class="btn btn-outline-dark" style="background: url(images/yulian.jpg);background-size:65px; width: 50px; height: 50px" alt="yulian"></button>
+			      <h4>RGB调色</h4>
+			      <div class="rgb">
+				  <div id="red"></div>
+                  <div id="green"></div>
+                  <div id="blue"></div>
+
+                  <div id="swatch" class="ui-widget-content ui-corner-all"></div>
+                  </div>
+                  <div id="rgb" style="">RGB(255,255,255)</div>
+                  
+              <h4></h4>
+			  <h4>花型</h4>
+                 <button class="btn btn-outline-dark" id="b1" style="background: url(images/1.jpg);background-size:40px; width: 40px;height: 40px"></button>
+                 <button class="btn btn-outline-dark" id="b2" style="background: url(images/2.jpg);background-size:40px; width: 40px; width: 40px;height: 40px"></button>
+                 <button class="btn btn-outline-dark" id="b3" style="background: url(images/3.jpg); background-size:40px; width: 40px;width: 40px;height: 40px"> </button>
+                 <button class="btn btn-outline-dark" id="b4" style="background: url(images/4.jpg); background-size:40px; width: 40px;width: 40px;height: 40px"> </button>
+                 <button class="btn btn-outline-dark" id="b5" style="background: url(images/5.jpg); background-size:40px; width: 40px;width: 40px;height: 40px"> </button>
+                 <button class="btn btn-outline-dark" id="b6" style="background: url(images/6.jpg);background-size:40px; width: 40px; width: 40px;height: 40px"></button>
+                 <button class="btn btn-outline-dark" id="b7" style="background: url(images/7.jpg); background-size:40px; width: 40px;width: 40px;height: 40px"></button>
+                 <div class="row">
+                 
+                 <div class="col" id="size" style="left:20px;top:10px"></div>
+                 <div class="col" style="left:10px"><h5 >Size</h5></div>
+                 </div>
+              <h4></h4>
+              <h4>上传花型</h4>
+              <div>
+              <h3>请选取一个图像文件:</h3> 
+              <a href="javascript:;" class="file">上传图片<input type="file" name="" id="file"></a>
+              <a href="javascript:;" class="file" id="qctp" >清除图片</a>
+              </div>
+              <h4 style="visibility:hidden">下载图片</h4>
+              <button class="btn btn-outline-dark hidden" id="sss" style="visibility:hidden">下载</button>                
+			</div>
+			
+		</div>
+		
+</body>
+</html>
